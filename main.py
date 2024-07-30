@@ -1,15 +1,11 @@
-# import csv
-#
-# with open('./weather_data.csv') as data_file:
-#     data = csv.reader(data_file)
-#     temperatures = []
-#     for row in data:
-#         if row[1] != 'temp':
-#             temperatures.append(int(row[1]))
-#     print(temperatures)
 import pandas
 
+
+def convert_to_f(celsius):
+    return celsius * (9 / 5) + 32
+
+
 data = pandas.read_csv('./weather_data.csv')
-print(round(data['temp'].mean(), 2))
-
-
+monday = data[data.day == 'Monday']
+converted_monday_temp = convert_to_f(monday.temp[0])
+print(converted_monday_temp)
