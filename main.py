@@ -1,11 +1,10 @@
 import pandas
 
+dog_dict = {
+    "name": ['Rocco', "Coffee"],
+    "breed" : ['Treeing Walker Coonhound', 'American English Coonhound']
+}
 
-def convert_to_f(celsius):
-    return celsius * (9 / 5) + 32
-
-
-data = pandas.read_csv('./weather_data.csv')
-monday = data[data.day == 'Monday']
-converted_monday_temp = convert_to_f(monday.temp[0])
-print(converted_monday_temp)
+data = pandas.DataFrame(dog_dict)
+data.to_csv('new_data.csv')
+print(data)
